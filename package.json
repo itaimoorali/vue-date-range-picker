@@ -1,5 +1,5 @@
 {
-  "name": "vue-date-picker",
+  "name": "vue-date-range-picker.git",
   "version": "0.1.0",
   "private": true,
   "main": "src/index.js",
@@ -7,6 +7,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itaimoorali/vue-date-range-picker.git"
   },
   "dependencies": {
     "core-js": "^3.8.3",
