@@ -1,26 +1,67 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <v-app>
+      <div class="messages">
+        <div><b>Selected Range:</b> {{ selectedRange }}</div>
+        <div><b>Selected Range Type:</b> {{ selectedType }}</div>
+        <div><b>Active Tab:</b> {{ activeTab }}</div>
+        <div><b>Is initialized fired:</b> {{ isInitialized }}</div>
+      </div>
+      <div class="wrapper">
+        <CustomDatePicker @change="onRangeChange" @init="onInit"/>
+      </div>
+    </v-app>
+
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CustomDatePicker from "@/components/CustomDatePicker.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    CustomDatePicker
+  },
+  data() {
+    return {
+      selectedRange: [],
+      selectedType: '',
+      activeTab: '',
+      isInitialized: false
+    }
+  },
+  methods: {
+    onRangeChange({type, range, activeTab}) {
+      this.selectedRange = range;
+      this.selectedType = type;
+      this.activeTab = activeTab;
+    },
+    onInit({range}) {
+      this.isInitialized = true;
+      this.selectedRange = range;
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  margin-top: 40px;
 }
 </style>
